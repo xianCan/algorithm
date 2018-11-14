@@ -13,7 +13,7 @@ public class HeapSort {
     public static void sortOfHeap(int[] arrays){
         for(int i=0;i<arrays.length;i++){
             //每次建堆就可以排除一个元素
-            maxHeapify(arrays,arrays.length-1);
+            maxHeapify(arrays,arrays.length-i);
             //交换
             int temp = arrays[0];
             arrays[0] = arrays[arrays.length-1-i];
@@ -26,14 +26,14 @@ public class HeapSort {
      * @param size
      */
     public static void maxHeapify(int[] arrays, int size){
-        //从数组的尾部开始，直到第一个元素（下标为0）
-        for (int i=size-1;i>=0;i--){
+        //从完全二叉树的第一个非叶子节点开始，直到第一个元素（下标为0）
+        for (int i=(size-1)/2;i>=0;i--){
             heapify(arrays, i, size);
         }
     }
     /**
      * 建堆
-      * @param arrays   看作是完全二叉树
+     * @param arrays   看作是完全二叉树
      * @param currentRootNode   当前父节点位置
      * @param size  节点总数
      */
@@ -61,10 +61,9 @@ public class HeapSort {
                 int temp = arrays[max];
                 arrays[max] = arrays[currentRootNode];
                 arrays[currentRootNode] = temp;
+                //继续比较，直到完成一次建堆
+                heapify(arrays,max,arrays.length);
             }
-
-            //继续比较，直到完成一次建堆
-            heapify(arrays,max,arrays.length);
         }
     }
 }
