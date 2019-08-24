@@ -58,4 +58,6 @@ public class Note {
     /**
      * 赫夫曼编码
      */
+
+    //new branch test
 }
